@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+
+
+
+  
+</head>
+<body>
+    <canvas id="myCanvas" resize></canvas>
+
+
+
+
+
+
+
+    <!-- Load the Paper.js library -->
+    <script type="text/javascript" src="js/paper-full.js"></script>
+    <!-- Define inlined JavaScript -->
+    <script type="text/javascript">
+
+        paper.install(window);
+
+        (function () {
+
+            // Get a reference to the canvas object
+            var canvas = document.getElementById('myCanvas');
+
+            // Create an empty project and a view for the canvas:
+            paper.setup(canvas);
+
+            // Create a Paper.js Path to draw a line into it:
+            var path = new Path();
+
+            // Give the stroke a color
+            path.strokeColor = 'black';
+
+            var start = new Point(100, 100);
+
+            // Move to start and draw a line from there
+            path.moveTo(start);
+
+            // Note that the plus operator on Point objects does not work
+            // in JavaScript. Instead, we need to call the add() function:
+            path.lineTo(start.add([200, -50]));
+
+
+
+
+
+
+            var circlePath = new Path.Circle(new Point(75, 50), 25);
+            circlePath.style = {
+                fillColor: 'white',
+                strokeColor: 'black'
+            };
+
+            // Make a copy of the path and set its stroke color to red:
+            var copy = circlePath.clone();
+            copy.strokeColor = 'red';
+
+            // Scale the copy by 50%:
+            copy.scale(0.5, new Point(100,100));
+
+
+
+            // Draw the view now:
+            paper.view.draw();
+
+
+
+        })();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hex Test 1</title>
+
+</head>
+<body>
+    <canvas id="HexCanvas" width="1000" height="700"></canvas>
+
+
+
+    <script src="js/hexagon.js"></script>
+    <script>
+        var hexagonGrid = new HexagonGrid("HexCanvas", 50);
+        hexagonGrid.drawHexGrid(7, 10, 50, 50, true);
+    </script>
+</body>
+</html>

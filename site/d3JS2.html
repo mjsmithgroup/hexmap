@@ -10,8 +10,11 @@
 
 <script src='js/d3.min.js'></script>
 <script>
+if (typeof console === "undefined") { console = {}; console.log = function () { return; } }
+
+
 var h = Math.sqrt(3) / 2;
-var radius = 20
+var radius = 10
 var xp = 250
 var yp = 150
 var hexagonData = [
@@ -45,25 +48,25 @@ drawHexagon = d3.svg.line().x(function (d) { return d.x; })
                            .y(function (d) { return d.y; })
                            .interpolate('linear-closed');
 
-var svgContainer = d3.select('body').append('svg').attr('width', 500).attr('height', 500);
+var svgContainer = d3.select('body').append('svg').attr('width', 1200).attr('height', 900);
 
-var enterElements = svgContainer.append('path')
-                                .attr('d', drawHexagon(HexData(xp, yp)))
-                                .attr('stroke', 'black')
-                                .attr('stroke-width', 1)
-                                .attr('fill', 'none');
+// var enterElements = svgContainer.append('path')
+//                                 .attr('d', drawHexagon(HexData(xp, yp)))
+//                                 .attr('stroke', 'black')
+//                                 .attr('stroke-width', 1)
+//                                 .attr('fill', 'none');
 
-svgContainer.append('path')
-            .attr('d', drawHexagon(HexData(xp + (radius * 1.5), yp + (radius * h))))
-            .attr('stroke', 'black')
-            .attr('stroke-width', 1)
-            .attr('fill', 'none');
+// svgContainer.append('path')
+//             .attr('d', drawHexagon(HexData(xp + (radius * 1.5), yp + (radius * h))))
+//             .attr('stroke', 'black')
+//             .attr('stroke-width', 1)
+//             .attr('fill', 'none');
 
-svgContainer.append('path')
-            .attr('d', drawHexagon(HexData(xp + (radius * 1.5), yp - (radius * h))))
-            .attr('stroke', 'black')
-            .attr('stroke-width', 1)
-            .attr('fill', 'none');
+// svgContainer.append('path')
+//             .attr('d', drawHexagon(HexData(xp + (radius * 1.5), yp - (radius * h))))
+//             .attr('stroke', 'black')
+//             .attr('stroke-width', 1)
+//             .attr('fill', 'none');
 
 
 function HexData(x, y)
@@ -97,22 +100,32 @@ function HexData(x, y)
 }
 
 
-for (var x = 0; x <= 500; x+=(3*radius)) {
+var counter = 0;
+var counter2 = 0;
+var yOffset = 0;
 
-    for (var y = 0; y <= 500; y+=(h*radius*2)) {
-        console.log(x + ', ' + y);
+for (var x = 0; x <= 1200; x+=(1.5*radius)) {
+    counter++;
 
+    for (var y = 0; y <= 900; y+=(h*radius*2)) {
+
+
+        if(counter & 1) {yOffset = h*radius;} else {yOffset = 0;};
+        console.log(x + ', ' + y + ', ' + yOffset);
         svgContainer.append('path')
-                    .attr('d', drawHexagon(HexData(x, y)))
+                    .attr('d', drawHexagon(HexData(x, y + yOffset)))
                     .attr('stroke', 'black')
                     .attr('stroke-width', 1)
                     .attr('fill', 'silver');
+
+        counter2++;
 
     };
 
  
 };
 
+console.log(counter2);
 
 
 </script>

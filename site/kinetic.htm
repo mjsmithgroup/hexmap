@@ -17,6 +17,10 @@
 
     <script src="js/kinetic-v5.1.0.min.js"></script>
     <script defer="defer">
+
+      if (typeof console === "undefined") { console = {}; console.log = function () { return; } }
+
+
       function addNode(obj, layer) {
         var node = new Kinetic.Circle({
           x: obj.x,

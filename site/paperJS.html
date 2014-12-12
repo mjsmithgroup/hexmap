@@ -17,6 +17,9 @@
     <script src="js/paper-full.js"></script>
 
     <script type="text/paperscript" canvas="canvas">
+
+        if (typeof console === "undefined") { console = {}; console.log = function () { return; } }
+    
         var values = {
             paths: 1000,
             minPoints: 4,

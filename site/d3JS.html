@@ -24,6 +24,8 @@
 <body>
 <script src="js/d3.min.js"></script>
 <script>
+if (typeof console === "undefined") { console = {}; console.log = function () { return; } }
+
 
 var margin = {top: -5, right: -5, bottom: -5, left: -5},
     width = 960 - margin.left - margin.right,

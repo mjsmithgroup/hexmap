@@ -21,6 +21,8 @@
     <!-- Define inlined JavaScript -->
     <script type="text/javascript">
 
+        if (typeof console === "undefined") { console = {}; console.log = function () { return; } }
+
         paper.install(window);
 
         (function () {
